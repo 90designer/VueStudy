@@ -1,0 +1,41 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li
+          :style="{background:'pink'}"
+          v-bind:class="{isActive: k == currentIndex}"
+          @click="setClass(k)"
+          v-for="(i , k) in movies"
+        >
+          {{ i }}--{{k}}
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            movies: ["海贼王", "进击的巨人", "葫芦娃"],
+            isActive: false,
+            currentIndex: -1,
+          };
+        },
+        methods: {
+          setClass: function (index) {
+            this.currentIndex = index;
+          },
+        },
+      });
+    </script>
+    <style>
+      .isActive {
+        color: red;
+      }
+    </style>
+  </body>
+</html>

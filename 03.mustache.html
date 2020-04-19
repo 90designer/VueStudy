@@ -1,0 +1,22 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <h2>{{msg}}</h2>
+      <h2>{{msg +"哈哈哈"+ msg2}}</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+            msg2: "222",
+            movies: ["星级穿越", "哈哈哈哈", "少年派"],
+          };
+        },
+      });
+    </script>
+  </body>
+</html>
