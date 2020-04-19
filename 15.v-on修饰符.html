@@ -1,12 +1,24 @@
 <html>
   <head> </head>
   <body>
+
     <div id="app">
-      <ul @click="ulclick">
-        <li @click="liclick('123', $event)">
-          Vue中的修饰符
-        </li>
-      </ul>
+      <!-- .stop 修饰符：阻止事件冒泡 -->
+      <div @click="divCli">
+        <button @click.stop="btn">修饰符</button>
+      </div>
+
+      <!-- .prevent 修饰符: 阻止默认事件 -->
+      <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="submitCli"/>
+      </form>
+
+      <!-- . 监听某个键盘的按键: 监听键盘的某个键的名字或者编号 -->
+      <input type="text" @keyup.13="keyCli(1)">
+      <input type="text" @keyup.enter="keyCli(1)">
+
+      <!-- .once 只触发一次 -->
+      <button @click.once="onceCli">修饰符</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -16,12 +28,22 @@
           return {};
         },
         methods: {
-          ulclick(event) {
-            console.log(event);
+          divCli(event) {
+            console.log("div");
+
           },
-          liclick(abc, event) {
-            console.log(abc, event);
+          btn(event) {
+            console.log('btn');
           },
+          submitCli(){
+            console.log("submitCli");
+          },
+          keyCli(v){
+            console.log(v);
+          },
+          onceCli(){
+            console.log(1111);
+          }
         },
       });
     </script>

@@ -1,0 +1,27 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <div v-if="isPhoneLogin">
+        <label for="phone">手机号登陆</label>
+        <input type="text" id="phone" key="phone"/>
+      </div>
+      <div v-else>
+        <label  for="emial">邮箱登陆</label>
+        <input type="text" id="emial" key="email"/>
+      </div>
+      <button @click="isPhoneLogin = !isPhoneLogin;">切换类型</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            isPhoneLogin: true,
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

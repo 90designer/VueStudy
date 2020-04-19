@@ -1,0 +1,75 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="item in msg" :key="item">{{item}}</li>
+      </ul>
+
+      <button @click="addRandmer"> 响应式:添加一个随机数 </button>
+      <button @click="modifyMer"> 非响应式: 修改数组值 </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: ['a','b','c','d'],
+          };
+        },
+        methods:{ 
+          /*
+          响应式方法
+            push(...)
+            pop()
+            shift()
+            unshift(...)
+            splice()
+            sort()
+            reverse()
+            Vue.set() // Vue内部方法
+          */
+          addRandmer(){
+            this.msg.push(Math.floor(Math.random(1,10)*100));
+            // this.msg.push('111','222','333');
+            // this.msg.unshift("AAA","BBB","CCC");
+
+            // setTimeout(() => {              
+            //   this.msg.pop();
+            // }, 600);
+
+            // setTimeout(() => {              
+            //   this.msg.shift();
+            // }, 600);
+            
+            // this.msg.splice(1);
+            // this.msg.splice(2,3, 'MM','NN','LL');
+            // this.msg.splice(3,0, '11','22','33');
+              
+            this.msg.sort();
+
+            this.msg.reverse();
+
+            Vue.set(this.msg, 0, 'bbbb');
+          },
+
+          /* 非响应式: 
+            通过索引无法响应界面.
+          */
+
+          modifyMer(){
+            this.msg[0] =  Math.floor(Math.random(1,10)*100);
+            console.log(this.msg);            
+          },          
+        },
+      });
+
+      // // js可变参数
+      // function add(...num){
+      //   return num;
+      // }
+
+    </script>
+  </body>
+</html>
