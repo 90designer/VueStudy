@@ -1,0 +1,34 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <my-cpn></my-cpn>
+      <my-cpn></my-cpn>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // ES6语法
+      // `abc`
+
+      // 1. 创建组建构造器对象
+       const cpn = Vue.extend({
+        //  注意：模版html外层必须只有一个父级html标签
+         template: `<div><h2>标题</h2>
+          <p>内容111</p>          
+          <p>内容222</p>
+          </div>`
+       })
+      // 2.注册组件  .component("组件标签名","构造器对象")
+      Vue.component("my-cpn",cpn);
+      
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

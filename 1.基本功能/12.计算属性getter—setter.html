@@ -1,0 +1,60 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <h2>{{fname + "" + lname}}</h2>
+      <h2>{{fullName}}</h2>
+      <h1 @click="setComputed(totalPrice)">总价格： {{totalPrice}}</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            fname: "陈",
+            lname: "辉",
+            books: [
+              { id: 1001, name: "编程艺术", price: 101 },
+              { id: 1002, name: "golang实战开发", price: 102 },
+              { id: 1003, name: "redis编程", price: 103 },
+              { id: 1004, name: "Vue基础", price: 104 },
+            ],
+          };
+        },
+        // 计算属性: 调用不需要写()
+        computed: {
+          fullName: {
+            get: function () {
+              return "20000";
+            },
+            set: function (v) {}, // 一般不用
+          },
+          totalPrice: function () {
+            let res = 0;
+            // js循环
+            // for (let i = 0; i < this.books.length; i++) {
+            //   res += this.books[i].price;
+            // }
+            //es6
+            // for (let i in this.books) {
+            //   res += this.books[i].price;
+            // }
+            // es6第二种循环
+            for (let b of this.books) {
+              res += b.price;
+            }
+
+            return res;
+          },
+        },
+        methods: {
+          setComputed: function (v) {
+            this.fullName = v;
+            alert(1);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <h2>{{url}}</h2>
+      <!-- 以html格式输出 -->
+      <h2 v-html="url"></h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            url: "<a href='http://baidu.com'>百度</a>",
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

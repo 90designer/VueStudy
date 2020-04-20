@@ -1,0 +1,39 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <mycpn></mycpn>
+      <mycpn2></mycpn2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+      // 1.注册全局组件的语法糖
+      Vue.component('mycpn',{
+         template: `<div><h2>标题111</h2>
+          <p>内容111</p>          
+          <p>内容222</p>
+          </div>`
+       });
+
+     
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+          };
+        },
+        // 2. 注册局部组件的语法糖
+        components:{
+          "mycpn2" : {
+              template: `<div><h2>标题22222</h2>
+                <p>内容111</p>          
+                <p>内容222</p>
+                </div>`
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

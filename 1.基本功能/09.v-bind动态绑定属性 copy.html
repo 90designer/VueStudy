@@ -1,0 +1,20 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <img v-bind:src="imgUrl" alt="属性绑定简写" />
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            imgUrl:
+              "https://img1.360buyimg.com/da/jfs/t1/31918/19/6335/274370/5c90a8beEefd9bfb9/e24970e34ce77262.gif?v=0.9852504759151532",
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

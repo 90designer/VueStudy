@@ -1,0 +1,36 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <my-cpn></my-cpn>
+      <my-cpn></my-cpn>
+      <mycpn></mycpn>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // 1. 创建组建构造器对象
+       const cpn = Vue.extend({
+        //  注意：模版html外层必须只有一个父级html标签
+         template: `<div><h2>标题</h2>
+          <p>内容111</p>          
+          <p>内容222</p>
+          </div>`
+       })
+      // 2.注册组件  .component("组件标签名","构造器对象")
+      Vue.component("my-cpn",cpn);  // 全局组件（多个Vue对象）
+      
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+          };
+        },
+        // 局部组件： 尽在次Vue对象中使用
+        components:{
+          "mycpn": cpn
+        }
+      });
+    </script>
+  </body>
+</html>

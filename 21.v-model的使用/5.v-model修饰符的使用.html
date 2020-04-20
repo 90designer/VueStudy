@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 修饰符： lazy  在失去焦点或者回车时候更新-->
+      <input type="text" v-model.lazy="msg"/>
+      <h2>{{msg}}</h2>
+     
+      <!-- 修饰符：number 默认v-model赋值给变量的类型是string-->
+      <input type="number" v-model.number="age"/>
+      <h2>{{age}}{{typeof age}}</h2>
+
+      <!-- 修饰符：trim 去除两边空格 -->
+      <input type="text" v-model.trim="msg"/>
+      <h2>|{{msg}}|</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "v-model双向绑定",
+            age: 11,
+          };
+        },
+      });
+    </script>
+  </body>
+</html>
