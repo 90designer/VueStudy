@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 单选框 -->
+      <label for="sc">
+        <input type="checkbox" id="sc" v-model="isSc" /> 蔬菜
+      </label>
+      <button :disabled="!isSc">下一步</button>
+      <hr />
+      <!-- 多选框 -->
+      <label for="sg">
+        <input type="checkbox" id="sg" value="水果" v-model="arrs" /> 水果
+      </label>
+      <label for="l">
+        <input type="checkbox" id="l" value="梨" v-model="arrs" /> 梨
+      </label>
+      <label for="pg">
+        <input type="checkbox" id="pg" value="苹果" v-model="arrs" /> 苹果
+      </label>
+      <h2>{{arrs}}</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            isSc: false,
+            arrs: [],
+          };
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

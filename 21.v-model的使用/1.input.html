@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 双向绑定 -->
+      <input type="text" v-model="msg" />
+      <!-- 两步实现 v-model的双向绑定 -->
+      <input type="text" v-bind:value="msg" @input="changeVal" />
+
+      <h2>{{msg}}</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "v-model双向绑定",
+          };
+        },
+        methods: {
+          changeVal(event) {
+            this.msg = event.target.value;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
