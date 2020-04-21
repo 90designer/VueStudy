@@ -5,6 +5,7 @@
     <!-- 1.script标签 -->
     <script type="text/x-template" id="mycpn">
       <div>
+        <!-- 组件中的变量不能使用Vue实例中的变量 -->
         <h2>{{title}}</h2>
       </div>
     </script>
@@ -22,15 +23,18 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
       /**
-      组件内部不能使用Vue实例中的data数据。
-    */
+        1. 组件内部不能使用Vue实例中的data数据。
+        2. 组建内容不能使用Vue实例中的methods
+
+        组件是完全封闭的，与Vue实例都不共享
+      */
 
       // 1.注册全局组件的语法糖
       Vue.component("mycpn", {
         template: "#mycpn",
         data() {
           return {
-            title: "这是一个标题",
+            title: "这是一个标题", // 组件变量
           };
         },
       });

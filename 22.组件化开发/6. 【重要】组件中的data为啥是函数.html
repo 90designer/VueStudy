@@ -1,0 +1,62 @@
+<html>
+  <head> </head>
+
+  <body>
+    <template id="mycpn">
+      <div>
+        <h2>当前计数：{{counter}}</h2>
+        <button @click="decr">-</button>
+        <button @click="incr">+</button>
+      </div>
+    </template>
+
+    <div id="app">
+      <!--
+        创建了3个组件实例， 因为data是函数function,
+        都有自己的作用域，所以不会影响各实例之间的数据
+      -->
+      <mycpn></mycpn>
+      <mycpn></mycpn>
+      <mycpn></mycpn>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // let obj = {
+      //   counter: 0,
+      // };
+      Vue.component("mycpn", {
+        template: "#mycpn",
+        data() {
+          return {
+            counter: 0,
+          };
+          /** 错误的写法:
+            创建组件实例后,虽然data是不同的函数，
+            但是data函数返回值是同一个，
+            那么组件实例之间的数据会相互影响
+           */
+          // return obj;
+        },
+        methods: {
+          incr() {
+            this.counter++;
+          },
+          decr() {
+            this.counter--;
+          },
+        },
+      });
+
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+          };
+        },
+        // 2. 注册局部组件的语法糖
+        components: {},
+      });
+    </script>
+  </body>
+</html>
