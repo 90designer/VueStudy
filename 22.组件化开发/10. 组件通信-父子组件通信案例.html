@@ -1,0 +1,61 @@
+<html>
+  <head> </head>
+
+  <body>
+    <template id="cpn">
+      <div>
+        <h2>子组件{{num1}}</h2>
+        <input type="text" v-model="num1" @input="cpnClick(num1)" />
+        <h2>{{num2}}</h2>
+      </div>
+    </template>
+
+    <div id="app">
+      <div>
+        父组件：{{num1}}
+      </div>
+      <cpn :num1="num1" :num2="num2" @childclick="childClick"></cpn>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+      // 子组件
+      const cpn = {
+        template: "#cpn",
+        props: {
+          num1: Number,
+          num2: Number,
+        },
+        methods: {
+          cpnClick(num) {
+            this.$emit("childclick", num);
+          },
+        },
+
+        watch: {
+          // 监听哪个变量，就用该变量名写一个 监听函数（新值，旧值）
+          num1: function (newVal, oldVal) {
+            console.log("子组件的watch监听:", newVal, oldVal);
+            this.$emit("childclick", newVal);
+          },
+        },
+      };
+      // 父组件
+      const app = new Vue({
+        el: "#app",
+        data: {
+          num1: 1,
+          num2: 0,
+        },
+        components: {
+          cpn,
+        },
+        methods: {
+          childClick: function (num) {
+            // console.log(typeof num); // 传递过来变为String类型
+            this.num1 = num * 1; // 强制转为number
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
