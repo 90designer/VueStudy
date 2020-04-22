@@ -25,12 +25,13 @@
           num1: Number,
           num2: Number,
         },
+        // 1. 通过click点击，来传递修改
         methods: {
           cpnClick(num) {
             this.$emit("childclick", num);
           },
         },
-
+        // 2. 通过监听变量变化，来传递修改
         watch: {
           // 监听哪个变量，就用该变量名写一个 监听函数（新值，旧值）
           num1: function (newVal, oldVal) {
