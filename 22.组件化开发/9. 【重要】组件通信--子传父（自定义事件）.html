@@ -1,0 +1,58 @@
+<html>
+  <head> </head>
+
+  <body>
+    <template id="cpn">
+      <div>
+        <h2>{{ccate}}</h2>
+        <ul>
+          <li v-for="c in ccate" @click="liClick(c)">
+            <span>{{c.id}}</span>
+            <span>{{c.name}}</span>
+          </li>
+        </ul>
+      </div>
+    </template>
+
+    <div id="app">
+      <!-- 2. 监听来自子组件的事件: Vue会默认传递子组件发出的参数 item-->
+      <cpn :ccate="ccate" @child-click="fromChildEvent"></cpn>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+      // 子组件
+      const cpn = {
+        template: "#cpn",
+        props: {
+          ccate: "ccate",
+        },
+        methods: {
+          liClick(item) {
+            item.name += 1;
+            this.$emit("child-click", item); // 1.子组件发出事件
+          },
+        },
+      };
+
+      // 父组件
+      const app = new Vue({
+        el: "#app",
+        data: {
+          ccate: [
+            { id: "1", name: "蔬菜" },
+            { id: "2", name: "家电" },
+            { id: "3", name: "衣服" },
+          ],
+        },
+        components: {
+          cpn,
+        },
+        methods: {
+          fromChildEvent: function (item) {
+            item.name += "父";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
