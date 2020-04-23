@@ -1,0 +1,60 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <cpn></cpn>
+      <cpn ref="bbb"></cpn>
+      <cpn ref="aaa"></cpn>
+      <button @click="btnCli">按钮</button>
+    </div>
+    <template id="cpn">
+      <div>
+        这是子组件
+      </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+            movies: ["星级穿越", "哈哈哈哈", "少年派"],
+          };
+        },
+        methods: {
+          btnCli() {
+            /* 
+             1. this.$children【数组】 获取所有子组件对象(用的比较少)
+            */
+            console.log(this.$children);
+            // this.$children[0].showMessage();
+            // console.log(this.$children[0].name);
+
+            /** 
+            2. $refs【对象】 获取子组件对象：但是需在标签中加入ref=“”属性，类型html中的id
+            */
+            // this.$refs.aaa; //　获取到子组件对象
+            // this.$refs.aaa.showMessage(); // 调用子组件对象中的方法或变量
+            console.log(this.$refs.aaa);
+          },
+        },
+        components: {
+          cpn: {
+            template: "#cpn",
+            data() {
+              return {
+                name: "子组件变量",
+              };
+            },
+            methods: {
+              showMessage() {
+                console.log("AA");
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
