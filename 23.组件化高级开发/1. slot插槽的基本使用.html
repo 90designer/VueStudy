@@ -1,0 +1,45 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <!-- 传递数据的方法：在组件标签中写入内容
+        模版中有多个slot会重复使用写入的内容。
+      -->
+      <cpn>
+        <button>按钮1</button>
+        <button>按钮2</button>
+      </cpn>
+      <cpn>
+        <p style="width: 100px; height: 100px; background: green;"></p>
+      </cpn>
+      <cpn></cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <h2>我是组件默认内容</h2>
+        <!-- 插槽： 扩展性好，使用slot标签预留占位符 -->
+        <slot></slot>
+        <h2>我在插槽之下</h2>
+        <!-- 插槽的默认值 -->
+        <slot><button>默认插槽内容</button></slot>
+      </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+            movies: ["星级穿越", "哈哈哈哈", "少年派"],
+          };
+        },
+        components: {
+          cpn: {
+            template: "#cpn",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

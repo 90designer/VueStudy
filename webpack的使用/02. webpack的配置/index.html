@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <!-- 直接在项目根目录下使用webpack命令打包:
+      1. 新建webpack.config.js
+      2. npm init (生成package.json文件)
+      3. npm install (生成package-lock.json文件)
+      4. 运行 webpack命令打包
+
+      webpack命令绑定 npm run build来执行
+      原因：
+        npm run好处：本地项目有webpack，优选本地。
+        cmd(命令行 )中输入的命令都是调用全局的。
+      方法：
+        1. package.json中scripts里加入“build":"webpack"
+        (因为本地没有webpack，所有npm run build执行最后还是执行全局webpack执行)
+        2. npm install webpack@3.6.0 --save-dev（只在开发时依赖）
+
+
+    -->
+    <script src="./dist/bundle.js"></script>
+  </body>
+</html>

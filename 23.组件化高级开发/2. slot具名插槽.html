@@ -1,0 +1,44 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="app">
+      <!-- 1. 只替换所有的没有命名的slot -->
+      <cpn>
+        <p style="width: 100px; height: 100px; background: green;"></p>
+      </cpn>
+
+      <!-- 2. slot=""属性指定模版中slot的名称   -->
+      <cpn>
+        <p
+          slot="center"
+          style="width: 100px; height: 100px; background: #f60;"
+        ></p>
+        <p slot="left" style="width: 50px; height: 50px; background: #369;"></p>
+      </cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <h2>我是组件默认内容</h2>
+        <slot name="left"><p>左边</p></slot>
+        <slot name="center"><p>中间</p></slot>
+        <slot><p>右边</p> </slot>
+      </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+          };
+        },
+        components: {
+          cpn: {
+            template: "#cpn",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
