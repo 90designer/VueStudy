@@ -1,0 +1,59 @@
+<html>
+  <head> </head>
+  <body>
+    <!-- 父组件访问自组件变量 -->
+    <div id="app">
+      <cpn></cpn>
+      <cpn>
+        <template slot-scope="slotObj">
+          <span
+            v-for="(item,index) in slotObj.childdata"
+            v-if="index != slotObj.childdata.length-1"
+            >{{item}}--</span
+          >
+          <span v-else>{{item}}</span>
+        </template>
+      </cpn>
+      <cpn>
+        <!-- 2. 父组件在使用子组件时， 使用slot-scpe属性标签定义一个变量名
+          该变量名就指向该子组件对象，通过该子组件对象获取到子组件绑定的变量 
+         ***Vue2.6.x之后改为 v-slot , 并且不用必须使用template标签，任意html标签都可
+        -->
+        <template slot-scope="slotObj">
+          <h2 v-for="item in slotObj.childdata">*{{item}}</h2>
+        </template>
+      </cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <!-- 1. 自组建绑定一个变量指向要访问的变量 -->
+        <slot :childdata="language">
+          <ul>
+            <li v-for="l in language">{{l}}</li>
+          </ul>
+        </slot>
+      </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "Vue最强",
+          };
+        },
+        components: {
+          cpn: {
+            template: "#cpn",
+            data() {
+              return {
+                language: ["python", "php", "java", "lua"],
+              };
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
