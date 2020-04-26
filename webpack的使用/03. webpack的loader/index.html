@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <!-- 
+      需求：
+        将css当作模块加载，一并打包到bundle.js
+      实现：
+        1. 在js入口文件中引入css文件
+          import / require
+        2. 安装webpack loader模块
+          npm install --save-dev css-loader // 只是解析并加载CSS代码
+          npm install --save-dev style-loader // 将css添加到DOM中
+        3. 配置webpack config【 webpack 加载loader时， 从右往左加载！！！】
+           module: {
+            rules: [
+              {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+              },
+            ],
+          },
+
+          备注：
+          问题： npm 安装包的过程中，包的版本和webpack版本不匹配？
+          解决：
+            1. npm view [包名] versions // 查看npm服务器上所有的版本
+            2.  npm view [包名] version// 查看npm服务器上最新版本
+
+        4.将es6转为es5， 需要babel相关包
+        npm install --save-dev babel-loader@7 babel-core babel-preset-es2015
+
+     -->
+    <div id="ces">
+      csd
+    </div>
+    <script src="./dist/bundle.js"></script>
+  </body>
+</html>

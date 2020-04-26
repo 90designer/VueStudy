@@ -69,7 +69,7 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__info__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_info__ = __webpack_require__(2);
 // ComonJs引入
 const { add, cc } = __webpack_require__(1);
 console.log(add(12, 11));
@@ -77,7 +77,7 @@ console.log(cc(12, 11));
 
 // ES6引入
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__info__["a" /* name */]);
+console.log(__WEBPACK_IMPORTED_MODULE_0__js_info__["a" /* name */]);
 
 
 /***/ }),
